@@ -12,8 +12,8 @@ import pandas as pd
 import csv
 
 read = '~/Data'
-modelWrite = 'Models/3CNN'
-resultWrite = 'Results/3CNN'
+modelWrite = 'Models'
+resultWrite = 'Results'
 
 ########################################################################
 # The output of torchvision datasets are PILImage images of range [0, 1].
@@ -70,7 +70,7 @@ pd.DataFrame(columns = ['aeroplane', 'cat', 'deer', 'dog', 'frog']).to_csv(class
 # 3. Kernel size
 # etc etc.,
 
-num_epochs = 15         # desired number of training epochs.
+num_epochs = 30         # desired number of training epochs.
 learning_rate = 0.01   
 
 class Net(nn.Module):

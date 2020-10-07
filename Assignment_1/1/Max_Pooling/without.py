@@ -12,8 +12,8 @@ import pandas as pd
 import csv
 
 read = '~/Data'
-modelWrite = 'Models/3CNN'
-resultWrite = 'Results/3CNN'
+modelWrite = 'Models/without'
+resultWrite = 'Results/without'
 
 ########################################################################
 # The output of torchvision datasets are PILImage images of range [0, 1].
@@ -78,7 +78,6 @@ class Net(nn.Module):
         super(Net, self).__init__()
 
         self.conv1 = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=5)
-        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
         self.conv2 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=5)
         self.conv3 = nn.Conv2d(in_channels=128, out_channels=256, kernel_size=5)
         self.fc1 = nn.Linear(in_features=256, out_features=64)
@@ -86,9 +85,9 @@ class Net(nn.Module):
         self.fc3 = nn.Linear(in_features=32, out_features=5)      # change out_features according to number of classes
 
     def forward(self, x):
-        x = self.pool(F.relu(self.conv1(x)))
-        x = self.pool(F.relu(self.conv2(x)))
-        x = self.pool(F.relu(self.conv3(x)))
+        x = F.relu(self.conv1(x))
+        x = F.relu(self.conv2(x))
+        x = F.relu(self.conv3(x))
         x = F.avg_pool2d(x, kernel_size=x.shape[2:])
         x = x.view(x.shape[0], -1)
         x = F.relu(self.fc1(x))
