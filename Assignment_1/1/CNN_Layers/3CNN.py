@@ -11,11 +11,9 @@ import torchvision.models as models
 import pandas as pd
 import csv
 
-source = './../../../Assignment_1'
-read = source + '/Data'
-write = source + '/1/CNN_Layers'
-modelWrite = write + '/Models'
-resultWrite = write + '/Results'
+read = '../../../Data'
+modelWrite = 'Models'
+resultWrite = 'Results'
 
 ########################################################################
 # The output of torchvision datasets are PILImage images of range [0, 1].
@@ -219,7 +217,7 @@ def classwise_test(testloader, model, isVal, epoch):
             classes[i], 100 * class_correct[i] / class_total[i]))
 
 print('Start Training')
-os.makedirs(write, exist_ok=True)
+#os.makedirs(write, exist_ok=True)
 
 for epoch in range(num_epochs):  # loop over the dataset multiple times
     print('epoch ', epoch + 1)
