@@ -12,9 +12,9 @@ import pandas as pd
 import csv
 
 read = '~/Data'
-write = 'Results/3CNN'
+write = 'Results/without'
 
-models = 'Models/3CNN/model-'
+models = 'Models/without/model-'
 ext = '.pth'
 
 trainName = write + '/train.csv'
